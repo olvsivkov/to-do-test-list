@@ -119,3 +119,13 @@ li>span {
   border-bottom-left-radius: 0;
   width: 75%;
 }
+
+.complited-checkbox-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2%;
+}
+
+.complited-checkbox-container>div>span {
+  cursor: pointer;
+}

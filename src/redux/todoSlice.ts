@@ -46,9 +46,18 @@ const todoSlice = createSlice({
     openPopup(state, action: PayloadAction<{ id: number; newDescription: string }>){
       const index = state.findIndex((todo) => todo.id === action.payload.id);
       visiblePopup('block', index)
+    },
+    showComplitedTask(state){
+      return state.filter((todo) => todo.completed === true);
+    },
+    showNotComplitedTask(state){
+      return state.filter((todo) => todo.completed === false);
+    },
+    showAllTasks(state){
+      return state
     }
   },
 });
 
-export const { addTodo, removeTodo, setTodoStatus, replaceDescriptions, openPopup } = todoSlice.actions;
+export const { addTodo, removeTodo, setTodoStatus, replaceDescriptions, openPopup, showComplitedTask, showNotComplitedTask, showAllTasks } = todoSlice.actions;
 export default todoSlice.reducer;
