@@ -1,38 +1,90 @@
-.App {
+body {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  background-image: linear-gradient(100deg, #d4f1ff, #ffffff);
+  color: #1a150e;
+  transition: 0.3s linear;
+}
+
+#root {
+  width: 50%;
+}
+
+.todo-container {
+  border: 1px solid black;
+}
+
+.to-do-title {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.todo-input {
+  padding: 10px;
+  font-size: 17px;
+  border: none;
+  outline: none;
+  border-top-left-radius: 17px;
+  border-bottom-left-radius: 17px;
+  width: 70%;
+  transition: background-color 200ms ease-in-out;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.todo-btn-input {
+  border: none;
+  outline: none;
+  transition: box-shadow 200ms ease, background-color 200ms ease-in-out;
+  padding: 10px;
+  font-size: 17px;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  min-width: 100px;
+  width: 25%;
+  background-color: #d2d2d2;
+  color: #1a150e;
+  cursor: pointer;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.todo-btn-input:hover {
+  background-color: #b2b1b1;
+}
+
+.todo-btn-input:active {
+  background-color: #5a5959;
+}
+
+li {
+  margin: 1rem;
+  background: rgb(250, 249, 249);
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  transition: background-color 200ms ease-in-out;
+  padding: 7px;
+  font-size: 20px;
+  flex: 1;
+  border-radius: 30px;
+  overflow-wrap: anywhere;
 }
 
-.App-link {
-  color: #61dafb;
+li>span {
+  width: 80%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.delete-btn {
+  border: none;
+  padding: 0;
+  font-size: 19px;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border-radius: 80%;
+  margin: 0 5px;
+  background-color: white;
+  color: #65625e;
+}
+
+.delete-btn:hover {
+  background-color: rgb(212, 207, 207);
 }
