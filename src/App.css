@@ -54,6 +54,7 @@ body {
   background-color: #5a5959;
 }
 
+
 li {
   margin: 1rem;
   background: rgb(250, 249, 249);
@@ -66,13 +67,14 @@ li {
   flex: 1;
   border-radius: 30px;
   overflow-wrap: anywhere;
+  margin: 16px 16px 0 0;
 }
 
 li>span {
-  width: 80%;
+  width: 70%;
 }
 
-.delete-btn {
+.task-close-btn {
   border: none;
   padding: 0;
   font-size: 19px;
@@ -85,6 +87,35 @@ li>span {
   color: #65625e;
 }
 
-.delete-btn:hover {
+.task-close-btn:hover {
   background-color: rgb(212, 207, 207);
+}
+
+.task-btn {
+  border: none;
+  font-size: 12px;
+  cursor: pointer;
+  margin: 0 5px;
+  background-color: white;
+  color: #65625e;
+  padding: 3%;
+  min-width: 75px;
+}
+
+.task-btn:hover {
+  background-color: rgb(212, 207, 207);
+}
+
+.replace-description {
+  padding: 1%;
+  background-color: #dedad6;
+  min-width: 330px;
+  width: 95%;
+  display: none;
+}
+
+.popup-input {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  width: 75%;
 }
