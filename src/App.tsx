@@ -10,7 +10,6 @@ function App() {
   const [todoDescription, setTodoDescription] = useState<string>("");
   const todoList = useSelector((state: RootState) => state);
   const dispatch = useDispatch<AppDispatch>();
-
   return (
     <div className='todo-container'>
     <h1 className='to-do-title'>To do list</h1>
