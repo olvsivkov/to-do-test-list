@@ -12,10 +12,6 @@ body {
   width: 50%;
 }
 
-.todo-container {
-  border: 1px solid black;
-}
-
 .to-do-title {
   text-align: center;
 }
@@ -120,12 +116,17 @@ li>span {
   width: 75%;
 }
 
-.complited-checkbox-container {
+.completed-checkbox-container {
   display: flex;
   justify-content: center;
   margin-top: 2%;
 }
 
-.complited-checkbox-container>div>span {
+.completed-checkbox-container>div>span {
   cursor: pointer;
+  
+}
+
+.completed-checkbox-container>div>span:hover {
+  text-decoration: underline;
 }

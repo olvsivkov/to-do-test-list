@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "./redux/store";
-import { addTodo, showComplitedTask, showNotComplitedTask, showAllTasks } from "./redux/todoSlice";
+import { addTodo,  showCompletedTask, showNotCompletedTask } from "./redux/todoSlice";
 import TaskItem from "./components/TaskItem";
 
 import "./App.css"
@@ -28,22 +28,17 @@ function App() {
       >
         Add
       </button>
-      <div className="complited-checkbox-container">
+      <div className="completed-checkbox-container">
         <div>
-          <span className="complited-task-change"
-          onClick={()=>dispatch(showComplitedTask())}
+          <span className="completed-task-change"
+          onClick={()=>dispatch(showCompletedTask())}
           >
-            complited task
+            completed task
           </span> / 
-          <span className="not-complited-task-change"
-          onClick={()=>dispatch(showNotComplitedTask())}
+          <span className="not-completed-task-change"
+          onClick={()=>dispatch(showNotCompletedTask())}
           >
-            not complited task
-          </span> /
-          <span className="all-tasks"
-          onClick={()=>dispatch(showAllTasks())}
-          >
-            all tasks
+            not completed task
           </span>
         </div>
       </div>

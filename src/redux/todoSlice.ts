@@ -1,23 +1,33 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Todo } from "../models/Todo";
 
-const initialState = [] as Todo[];
+const loadTodosFromLocalStorage = () => { // загрузить state из local storage
+  const todos = localStorage.getItem('todos');
+  return todos ? JSON.parse(todos) : [];
+};
 
-function visiblePopup(arg: string, index: number){
-  const replaceDescriptionElements = document.querySelectorAll('.replace-description');
+function visiblePopup(arg: string, index: number, tag: string){ // сделать видимым блок для изменения описания задачи
+  const replaceDescriptionElements = document.querySelectorAll(tag);
   if (replaceDescriptionElements.length > index) {
     const replaceDescriptionElement = replaceDescriptionElements[index] as HTMLElement;
     replaceDescriptionElement.style.display = arg;
   }
 }
 
+const saveTodosToLocalStorage = (todos: Todo[]) => {  // сохранит данные в localstorage
+  localStorage.setItem('todos', JSON.stringify(todos));
+};
+
+const initialState = loadTodosFromLocalStorage() as Todo[];
+
 const todoSlice = createSlice({
   name: "todos",
   initialState,
   reducers: {
-    addTodo: {
+    addTodo: { // создать задачу
       reducer: (state: any, action: PayloadAction<Todo>) => {
         state.push(action.payload);
+        saveTodosToLocalStorage(state);
       },
       prepare: (description: string) => ({
         payload: {
@@ -27,37 +37,41 @@ const todoSlice = createSlice({
         } as Todo,
       })
     },
-    removeTodo(state, action: PayloadAction<string>) {
+    removeTodo(state, action: PayloadAction<string>) {  // удалить задачу
       const index = state.findIndex((todo) => todo.id === parseInt(action.payload));
       state.splice(index, 1);
+      saveTodosToLocalStorage(state);
     },
-    setTodoStatus(
+    setTodoStatus( // чекбокс - задача выполнена
       state,
       action: PayloadAction<{ completed: boolean; id: number }>
     ) {
       const index = state.findIndex((todo) => todo.id === action.payload.id);
       state[index].completed = action.payload.completed;
+      saveTodosToLocalStorage(state);
     },
-    replaceDescriptions(state, action: PayloadAction<{ id: number; newDescription: string }>) {
+    replaceDescriptions(state, action: PayloadAction<{ id: number; newDescription: string }>) { // изменить описание задачи
       const index = state.findIndex((todo) => todo.id === action.payload.id);
       state[index].description = action.payload.newDescription;
-      visiblePopup('none', index)
+      saveTodosToLocalStorage(state);
+      visiblePopup('none', index, ".replace-description")
     },
-    openPopup(state, action: PayloadAction<{ id: number; newDescription: string }>){
+    openPopup(state, action: PayloadAction<{ id: number; newDescription: string }>){ // открыть блок для изменения задачи и внести изменения
       const index = state.findIndex((todo) => todo.id === action.payload.id);
-      visiblePopup('block', index)
+      visiblePopup('block', index, ".replace-description")
     },
-    showComplitedTask(state){
-      return state.filter((todo) => todo.completed === true);
+    showCompletedTask(state){ // фильтр исполненых задач
+      const completedStateTask = state.filter((todo) => todo.completed === true);
+      saveTodosToLocalStorage(completedStateTask);
+      return completedStateTask
     },
-    showNotComplitedTask(state){
-      return state.filter((todo) => todo.completed === false);
-    },
-    showAllTasks(state){
-      return state
+    showNotCompletedTask(state){ // фильтр не исполненых задач
+      const notCompletedStateTask = state.filter((todo) => todo.completed === false);
+      saveTodosToLocalStorage(notCompletedStateTask);
+      return notCompletedStateTask
     }
   },
 });
 
-export const { addTodo, removeTodo, setTodoStatus, replaceDescriptions, openPopup, showComplitedTask, showNotComplitedTask, showAllTasks } = todoSlice.actions;
+export const { addTodo, removeTodo, setTodoStatus, replaceDescriptions, openPopup, showCompletedTask, showNotCompletedTask } = todoSlice.actions;
 export default todoSlice.reducer;
