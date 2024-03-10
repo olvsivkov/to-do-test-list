@@ -1,5 +1,7 @@
 # Тестовое задание
 
+Помотреть задание можно по этой [ссылке] (https://olvsivkov.github.io/to-do-test-list/build/).
+
 Разработка To do list с использованием React и Redux toolkit
 
 Задание: создать приложение с использованием React и Redux toolkit.
