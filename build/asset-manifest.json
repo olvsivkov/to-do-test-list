@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/to-do-test-list/public/static/css/main.fbbd442a.css",
+    "main.js": "/to-do-test-list/public/static/js/main.b84268fc.js",
+    "index.html": "/to-do-test-list/public/index.html",
+    "main.fbbd442a.css.map": "/to-do-test-list/public/static/css/main.fbbd442a.css.map",
+    "main.b84268fc.js.map": "/to-do-test-list/public/static/js/main.b84268fc.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fbbd442a.css",
+    "static/js/main.b84268fc.js"
+  ]
+}
